@@ -25,6 +25,6 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    binding.pry
+    @article = Article.find(params[:id])
   end
 end
