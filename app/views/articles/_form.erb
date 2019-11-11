@@ -1,4 +1,4 @@
-<% binding.pry %>
+<% if @article.id.nil? %>
   <%= form_tag articles_path do %>
     <label>Article title:</label><br>
     <%= text_field_tag :title %><br>
@@ -8,15 +8,14 @@
 
     <%= submit_tag "Submit Article" %>
   <% end %>
+<% else %>
+  <%= form_for @article do |f| %>
+    <%= f.label 'Article Title' %><br>
+    <%= f.text_field :title %><br>
 
+    <%= f.label 'Article Description' %><br>
+    <%= f.text_area :description %><br>
 
-
-<%= form_for @article do |f| %>
-  <%= f.label 'Article Title' %><br>
-  <%= f.text_field :title %><br>
-
-  <%= f.label 'Article Description' %><br>
-  <%= f.text_area :description %><br>
-
-  <%= f.submit "Submit Article" %>
+    <%= f.submit "Submit Article" %>
+  <% end %>
 <% end %>
